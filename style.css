@@ -1,0 +1,26 @@
+.header {
+    text-align: center;
+    color: #5DD2B3;
+}
+
+.todo-title {
+    text-align: center;
+    font-size: 30px;
+    padding-top: 20px;
+}
+
+li {
+    list-style: none;
+}
+
+.list label{
+    font-size: 20px;
+}
+
+.done {
+    text-decoration: line-through;
+}
+
+.delete {
+    margin-left: 10px;
+}

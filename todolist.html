@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.0/css/bulma.css'/>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <div class="header title is-2">
+      <h1>ToDo List</h1>
+    </div>
+
+    <div class="input-todo columns">
+        <div class="todo-title column is-2">待辦事項</div>
+        <div class="column">
+          <input type="text" placeholder="請輸入事項" class="input is-large">
+        </div>
+        <div class="column  is-2">
+          <button type="button" class="add button is-primary is-large">新增</button>
+        </div>
+      </div>
+
+    <div class="content">
+      <ul class="list"></ul>
+    </div>
+
+    <div class="footer columns">
+        <div class="listNum column">目前有 0 筆任務</div>
+        <div><a href="" type="button" class="cleanBTN column">全部清除</a></div>
+    </div>
+  </div>
+  <script src="all.js"></script>
+</body>
+
+</html>
