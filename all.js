@@ -5,7 +5,7 @@ const deleteBtn = document.querySelector("ul");
 const listNum = document.querySelector(".listNum");
 const clean = document.querySelector(".cleanBTN");
 
-const listData = [];
+let listData = []; // 原本使用 const，改用 let
 add.addEventListener("click", addList);
 clean.addEventListener("click", clearAll);
 deleteBtn.addEventListener("click", removeList);
@@ -47,7 +47,7 @@ function render() {
   listNum.innerHTML = `目前有 ${listData.length} 筆任務`
 }
 
-function clearAll() {
+function clearAll(e) { // 忘記補上 e 的參數
     e.preventDefault();
     listData = [];
     render()
