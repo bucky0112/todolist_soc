@@ -1,32 +1,32 @@
-const inputText = document.querySelector('.input')
-const add = document.querySelector('.add')
-const list = document.querySelector('.list')
-const deleteBtn = document.querySelector('ul')
-const listNum = document.querySelector('.listNum')
-const clean = document.querySelector('.cleanBTN')
+const inputText = document.querySelector('.input');
+const add = document.querySelector('.add');
+const list = document.querySelector('.list');
+const deleteBtn = document.querySelector('ul');
+const listNum = document.querySelector('.listNum');
+const clean = document.querySelector('.cleanBTN');
 
-// let listData = []
-let listData = JSON.parse(localStorage.getItem('todoList')) || []
-add.addEventListener('click', addList)
-clean.addEventListener('click', clearAll)
-deleteBtn.addEventListener('click', handleListEvent)
+let listData = JSON.parse(localStorage.getItem('todoList')) || [];
+
+add.addEventListener('click', addList);
+clean.addEventListener('click', clearAll);
+deleteBtn.addEventListener('click', handleListEvent);
 
 function addList() {
-  const value = inputText.value.trim()
+  const value = inputText.value.trim();
   if (!value) {
-    return
+    return;
   }
   listData.push({
     text: value,
     status: false,
     id: listData.length
-  })
-  render()
-  inputText.value = ''
+  });
+  render();
+  inputText.value = '';
 }
 
 function render() {
-  let str = ''
+  let str = '';
   listData.forEach((item, i) => {
     str += `
             <li>
@@ -38,32 +38,32 @@ function render() {
                 </label>
                 <a href="" class='delete' data-num='${i}'>刪除</a>
             </li>
-        `
-  })
-  list.innerHTML = str
-  listNum.innerHTML = `目前有 ${listData.length} 筆任務`
+        `;
+  });
+  list.innerHTML = str;
+  listNum.innerHTML = `目前有 ${listData.length} 筆任務`;
 
-  localStorage.setItem('todoList', JSON.stringify(listData))
+  localStorage.setItem('todoList', JSON.stringify(listData));
 }
 
 function clearAll(e) {
-  e.preventDefault()
-  listData = []
-  render()
+  e.preventDefault();
+  listData = [];
+  render();
 }
 
 function handleListEvent(e) {
-  e.preventDefault()
+  e.preventDefault();
   if (e.target.nodeName === 'A') {
-    listData = listData.filter((item, index) => index != e.target.dataset.num)
+    listData = listData.filter((item, index) => index != e.target.dataset.num);
   } else if (e.target.nodeName === 'INPUT') {
     listData.forEach((item) => {
       if (e.target.dataset.num == item.id) {
-        item.status = !item.status
+        item.status = !item.status;
       }
-    })
+    });
   }
-  render()
+  render();
 }
 
-render()  // 在取得資料後馬上更新畫面
+render();
