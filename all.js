@@ -10,6 +10,13 @@ let listData = JSON.parse(localStorage.getItem('todoList')) || [];
 add.addEventListener('click', addList);
 clean.addEventListener('click', clearAll);
 deleteBtn.addEventListener('click', handleListEvent);
+inputText.addEventListener('keypress', handleKeyPress);
+
+function handleKeyPress(e) {
+  if (e.keyCode === 13) {
+    addList();
+  }
+}
 
 function addList() {
   const value = inputText.value.trim();
@@ -28,13 +35,14 @@ function addList() {
 function render() {
   let str = '';
   listData.forEach((item, i) => {
+    item.id = i;
     str += `
             <li>
                 <label class='checkbox ${item.status ? 'done' : ''}'>
                     <input type='checkbox' class='status' ${
                       item.status ? 'checked' : ''
                     } data-num=${i}>
-                    ${item.text}
+                    <span>${item.text}</span>
                 </label>
                 <a href="" class='delete' data-num='${i}'>刪除</a>
             </li>
